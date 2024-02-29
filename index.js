@@ -10,7 +10,8 @@ const app = express()
 
 app.use(cors());
 app.use(express.json())
-const DB = "mongodb+srv://bible:bibleapp@cluster0.3om6qgr.mongodb.net/bible?retryWrites=true&w=majority&appName=Cluster0"
+require("dotenv").config()
+const DB = process.env.DB_URI
 
 mongoose.set('strictQuery', false);
 mongoose.connect(DB).then(() => app.listen(5000)).catch(err => console.log(err))
